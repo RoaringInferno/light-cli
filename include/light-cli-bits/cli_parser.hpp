@@ -65,6 +65,8 @@ namespace lcli
         inline argument_list_t &argument_list() { return arguments; }
         inline const argument_list_t &argument_list() const { return arguments; }
 
+        inline size_type argument_count() const { return arguments.size(); }
+
         // Argument list iterators
         inline iterator begin() { return arguments.begin(); }
         inline iterator end() { return arguments.end(); }
