@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     std::vector<std::string> raw_argument_list(argc - 1);
     for (int i = 1; i < argc; i++)
     {
-        raw_argument_list[i] = argv[i];
+        raw_argument_list[i-1] = argv[i];
     }
     lcli::cli_parser parser(raw_argument_list);
     for (const lcli::cli_parser::argument &argument : parser)
