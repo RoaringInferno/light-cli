@@ -7,12 +7,7 @@ std::string get_print_string(const lcli::cli_parser::argument &argument);
 
 int main(int argc, char *argv[])
 {
-    std::vector<std::string> raw_argument_list(argc - 1);
-    for (int i = 1; i < argc; i++)
-    {
-        raw_argument_list[i-1] = argv[i];
-    }
-    lcli::cli_parser parser(raw_argument_list);
+    lcli::cli_parser parser(argc, argv);
     for (const lcli::cli_parser::argument &argument : parser)
     {
         std::cout << get_print_string(argument) << "\n";

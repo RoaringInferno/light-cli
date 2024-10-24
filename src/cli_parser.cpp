@@ -5,6 +5,11 @@ lcli::cli_parser::cli_parser(const std::vector<std::string> &raw_argument_list)
     parse(raw_argument_list);
 }
 
+lcli::cli_parser::cli_parser(int argc, char **argv)
+{
+    parse(argc, argv);
+}
+
 void lcli::cli_parser::parse(const std::vector<std::string> &raw_argument_list)
 {
     // Pre-allocating the minimum amount of memory, saving time in the hot loop
@@ -76,4 +81,15 @@ void lcli::cli_parser::parse(const std::vector<std::string> &raw_argument_list)
 
         arguments.push_back({argument::type::soft_argument, raw_argument}); // Push the argument as a soft argument (can be used by a preceeding option)
     }
+}
+
+void lcli::cli_parser::parse(int argc, char **argv)
+{
+    std::vector<std::string> raw_argument_list(argc-1);
+    for (int i = 1; i < argc; i++)
+    {
+        raw_argument_list[i-1] = argv[i];
+    }
+
+    parse(raw_argument_list);
 }
