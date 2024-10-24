@@ -21,7 +21,7 @@ namespace lcli
             type argument_type;
             std::string_view argument_value;
 
-            operator std::string_view() const { return argument_value; }
+            inline operator std::string_view() const { return argument_value; }
         };
     private: // Private types
         typedef std::vector<argument> argument_list_t;
@@ -33,13 +33,13 @@ namespace lcli
     private: // Private members
         argument_list_t arguments;
     public: // Public Constructors
-        cli_parser() = default;
-        cli_parser(const std::vector<std::string>& raw_argument_list);
-        cli_parser(const cli_parser &) = default;
-        cli_parser(cli_parser &&) = default;
-        cli_parser &operator=(const cli_parser &) = default;
-        cli_parser &operator=(cli_parser &&) = default;
-        ~cli_parser() = default;
+        inline cli_parser() = default;
+        inline cli_parser(const std::vector<std::string>& raw_argument_list);
+        inline cli_parser(const cli_parser &) = default;
+        inline cli_parser(cli_parser &&) = default;
+        inline cli_parser &operator=(const cli_parser &) = default;
+        inline cli_parser &operator=(cli_parser &&) = default;
+        inline ~cli_parser() = default;
     public: // Public functions
         /**
          * @brief The parse function
@@ -57,25 +57,25 @@ namespace lcli
          * - "--" : all subsequent "argument"s -> {hard_argument, "argument"}
          * @param raw_argument_list The raw argument list to parse
          */
-        void parse(const std::vector<std::string>& raw_argument_list);
+        inline void parse(const std::vector<std::string>& raw_argument_list);
 
         // Argument list accessors
-        argument_list_t &argument_list() { return arguments; }
-        const argument_list_t &argument_list() const { return arguments; }
+        inline argument_list_t &argument_list() { return arguments; }
+        inline const argument_list_t &argument_list() const { return arguments; }
 
         // Argument list iterators
-        iterator begin() { return arguments.begin(); }
-        iterator end() { return arguments.end(); }
-        const_iterator begin() const { return arguments.begin(); }
-        const_iterator end() const { return arguments.end(); }
+        inline iterator begin() { return arguments.begin(); }
+        inline iterator end() { return arguments.end(); }
+        inline const_iterator begin() const { return arguments.begin(); }
+        inline const_iterator end() const { return arguments.end(); }
 
         // Argument list size
-        size_type size() const { return arguments.size(); }
+        inline size_type size() const { return arguments.size(); }
 
         // Argument list empty
-        bool isempty() const { return arguments.empty(); }
+        inline bool isempty() const { return arguments.empty(); }
 
         // Argument list clear
-        void clear() { arguments.clear(); }
+        inline void clear() { arguments.clear(); }
     };
 } // namespace largs
