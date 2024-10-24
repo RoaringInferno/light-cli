@@ -34,7 +34,7 @@ namespace lcli
         argument_list_t arguments;
     public: // Public Constructors
         inline cli_parser() = default;
-        inline cli_parser(const std::vector<std::string>& raw_argument_list);
+        cli_parser(const std::vector<std::string>& raw_argument_list);
         inline cli_parser(const cli_parser &) = default;
         inline cli_parser(cli_parser &&) = default;
         inline cli_parser &operator=(const cli_parser &) = default;
@@ -57,7 +57,7 @@ namespace lcli
          * - "--" : all subsequent "argument"s -> {hard_argument, "argument"}
          * @param raw_argument_list The raw argument list to parse
          */
-        inline void parse(const std::vector<std::string>& raw_argument_list);
+        void parse(const std::vector<std::string>& raw_argument_list);
 
         // Argument list accessors
         inline argument_list_t &argument_list() { return arguments; }
