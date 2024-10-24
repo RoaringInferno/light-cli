@@ -20,7 +20,7 @@ void lcli::cli_parser::parse(const std::vector<std::string> &raw_argument_list)
     {
         if (force_hard_argument) // Short-circuit the option parsing if the "--" argument was found
         {
-            arguments.push_back({argument_t::type::hard_argument, raw_argument});
+            arguments.push_back({argument::type::hard_argument, raw_argument});
             continue;
         }
 
@@ -33,7 +33,7 @@ void lcli::cli_parser::parse(const std::vector<std::string> &raw_argument_list)
 
         if (size == 1) // Skip single character arguments
         {
-            arguments.push_back({argument_t::type::hard_argument, raw_argument});
+            arguments.push_back({argument::type::hard_argument, raw_argument});
             continue;
         }
 
@@ -59,21 +59,21 @@ void lcli::cli_parser::parse(const std::vector<std::string> &raw_argument_list)
                     index++;
                 }
 
-                arguments.push_back({argument_t::type::long_option, std::string_view(&raw_argument[2], index - 2)}); // Push the long option name
+                arguments.push_back({argument::type::long_option, std::string_view(&raw_argument[2], index - 2)}); // Push the long option name
                 if (index == size) // No value was explicitly passed to the long option
                 {
                     continue;
                 }
 
                 index++; // Skip the "=" character
-                arguments.push_back({argument_t::type::passed_long_option_value, std::string_view(&raw_argument[index], size - index)}); // Push the value passed to the long option
+                arguments.push_back({argument::type::passed_long_option_value, std::string_view(&raw_argument[index], size - index)}); // Push the value passed to the long option
                 continue;
             }
 
-            arguments.push_back({argument_t::type::short_option_string, std::string_view(&raw_argument[index], size - 1)});
+            arguments.push_back({argument::type::short_option_string, std::string_view(&raw_argument[index], size - 1)});
             continue;
         }
 
-        arguments.push_back({argument_t::type::soft_argument, raw_argument}); // Push the argument as a soft argument (can be used by a preceeding option)
+        arguments.push_back({argument::type::soft_argument, raw_argument}); // Push the argument as a soft argument (can be used by a preceeding option)
     }
 }

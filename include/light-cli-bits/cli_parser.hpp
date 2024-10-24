@@ -8,7 +8,7 @@ namespace lcli
     class cli_parser
     {
     public: // Public types
-        struct argument_t
+        struct argument
         {
             enum type : unsigned char
             {
@@ -26,7 +26,7 @@ namespace lcli
             operator std::string_view() const { return argument_value; }
         };
     private: // Private types
-        typedef std::vector<argument_t> argument_list_t;
+        typedef std::vector<argument> argument_list_t;
     public: // Public types
         typedef argument_list_t::size_type size_type;
 
