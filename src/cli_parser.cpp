@@ -85,7 +85,7 @@ void lcli::cli_parser::parse(const std::vector<std::string> &raw_argument_list)
 
 void lcli::cli_parser::parse(int argc, char **argv)
 {
-    std::vector<std::string> raw_argument_list(argc-1);
+    static std::vector<std::string> raw_argument_list(argc-1);
     for (int i = 1; i < argc; i++)
     {
         raw_argument_list[i-1] = argv[i];
