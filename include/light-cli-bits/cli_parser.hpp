@@ -18,9 +18,7 @@ namespace lcli
                 long_option, // A long option is an option that is passed with a double dash
                 passed_long_option_value // A passed long option value is an option value that was passed to a long option
             };
-            typedef type type_t;
-
-            type_t argument_type;
+            type argument_type;
             std::string_view argument_value;
 
             operator std::string_view() const { return argument_value; }
